@@ -7,12 +7,25 @@ namespace Divisao
         static void Main(string[] args)
         {
             decimal numerador, denominador, resultado;
+            bool numeradorValido, denominadorValido;
 
             Console.Write("Digite o numerador....: ");
-            numerador = Convert.ToDecimal(Console.ReadLine());
+            numeradorValido = Decimal.TryParse(Console.ReadLine(), out numerador);
+
+            if (!numeradorValido)
+            {
+                Console.WriteLine("O numerador informado não é um número válido");
+                Environment.Exit(1);
+            }
 
             Console.Write("Digite o denominador..: ");
-            denominador = Convert.ToDecimal(Console.ReadLine());
+            denominadorValido = Decimal.TryParse(Console.ReadLine(), out denominador);
+
+            if (!denominadorValido)
+            {
+                Console.WriteLine("O denominador informado não é um número válido");
+                Environment.Exit(1);
+            }
 
             if (denominador == 0)
             {
